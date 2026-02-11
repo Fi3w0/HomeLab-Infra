@@ -1,0 +1,36 @@
+# Sensitive data
+.env
+*.env
+secrets/
+credentials/
+*.key
+*.pem
+*.cert
+
+# Local overrides
+docker-compose.override.yml
+local-config/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
