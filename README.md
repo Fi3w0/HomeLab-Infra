@@ -64,16 +64,35 @@ HomeLab-Infra/
 | `backup-minecraft.sh` | Backup Minecraft server worlds | `./scripts/backup-minecraft.sh <server-name>` |
 | `update-all.sh` | Update all Docker images | `./scripts/update-all.sh` |
 | `status-all.sh` | Check status of all services | `./scripts/status-all.sh` |
+| `start-selected.sh` | Start selected Minecraft servers (max 2) | `./scripts/start-selected.sh <server1> <server2>` |
+| `stop-all.sh` | Stop all services | `./scripts/stop-all.sh` |
 
 ### Systemd Integration
 - Place `.service` files in `/systemd/` for service management
 - Use `.timer` files in `/systemd/` for scheduled tasks
 - Example: Daily Minecraft backups via systemd timer
 
-### Resource Management
-- Minecraft servers configured with 6GB RAM each
-- Monitor resource usage with `docker stats`
-- Adjust `MEMORY` environment variable in docker-compose.yml as needed
+### Resource Management & Limitations
+
+**Hardware Constraints:**
+- **Primary Server:** Ryzen 5 7430U (12 vCPUs, 16GB RAM)
+- **Storage:** 512GB total available space
+- **Network:** 1Gb/s symmetric internet connection
+- **Control Devices:** MacBook Air M4 (primary) + Thinkpad T14 with Arch Linux (secondary)
+
+**Concurrent Service Limits:**
+- ✅ **Always running:** Portainer + fiw_SMPweb
+- ⚠️ **Maximum 2 Minecraft servers** concurrently (due to 16GB RAM limitation)
+- 🔄 **Rotate servers** based on usage needs
+
+**Memory Allocation:**
+- Pixelmon: 6GB RAM
+- ATM10: 10GB RAM  
+- Vanilla: 4GB RAM
+- Test Paper: 2GB RAM
+- Test Fabric: 8GB RAM
+
+**Important:** Never run more than 2 Minecraft servers simultaneously to avoid out-of-memory issues. Use `./scripts/start-selected.sh` to manage server rotation.
 
 ## Contributing
 
