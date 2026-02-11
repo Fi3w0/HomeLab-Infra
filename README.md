@@ -24,7 +24,13 @@ HomeLab-Infra/
 
 | Service Name | Port | Purpose | Status |
 |--------------|------|---------|--------|
-| *No services configured yet* | | | |
+| Portainer | PORTAINER_HOLDER | Docker container management UI | Ready |
+| Pixelmon (NeoForge) | PORT_HOLDER | Minecraft Pixelmon modpack server | Ready |
+| ATM10 | PORT_HOLDER | Minecraft All The Mods 10 modpack server | Ready |
+| Vanilla | PORT_HOLDER | Standard Minecraft server | Ready |
+| Test Paper | PORT_HOLDER | Minecraft Paper server for testing | Ready |
+| Test Fabric | PORT_HOLDER | Minecraft Fabric server for testing | Ready |
+| fiw_SMPweb | 80 | Minecraft server web dashboard | Ready |
 
 ## Getting Started
 
@@ -51,9 +57,23 @@ HomeLab-Infra/
 
 ## Maintenance
 
-- Use scripts in `/scripts/` for automated backups and maintenance
-- Systemd timers in `/systemd/` handle scheduled tasks
-- Regular updates and monitoring recommended
+### Available Scripts
+
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| `backup-minecraft.sh` | Backup Minecraft server worlds | `./scripts/backup-minecraft.sh <server-name>` |
+| `update-all.sh` | Update all Docker images | `./scripts/update-all.sh` |
+| `status-all.sh` | Check status of all services | `./scripts/status-all.sh` |
+
+### Systemd Integration
+- Place `.service` files in `/systemd/` for service management
+- Use `.timer` files in `/systemd/` for scheduled tasks
+- Example: Daily Minecraft backups via systemd timer
+
+### Resource Management
+- Minecraft servers configured with 6GB RAM each
+- Monitor resource usage with `docker stats`
+- Adjust `MEMORY` environment variable in docker-compose.yml as needed
 
 ## Contributing
 

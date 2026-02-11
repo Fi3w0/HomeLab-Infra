@@ -1,0 +1,21 @@
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    container_name: fabric-test-server
+    ports:
+      - "PORT_HOLDER"
+      - "PORT_HOLDER"
+    environment:
+      EULA: "TRUE"
+      TYPE: "FABRIC"
+      VERSION: "1.21.11"
+      FABRIC_LOADER_VERSION: "latest"
+      MEMORY: "8G"
+
+      # RCON
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "PASSWORD_HOLDER"
+      RCON_PORT: "25575"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

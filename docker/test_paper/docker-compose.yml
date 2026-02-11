@@ -1,0 +1,19 @@
+services:
+  test_paper:
+    stdin_open: true
+    tty: true
+    image: itzg/minecraft-server:latest
+    container_name: test_paper
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      MEMORY: "2G"
+      VERSION: "1.21.11"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: PASSWORD_HOLDER
+      RCON_PORT: 25575
+      SERVER_PORT: PORT_HOLDER
+      USE_AIKAR_FLAGS: "true"
+    ports:
+      - PORT_HOLDER
+    restart: unless-stopped

@@ -1,0 +1,21 @@
+services:
+  neoforge:
+    image: itzg/minecraft-server:java21
+    container_name: neoforge
+    stdin_open: true
+    tty: true
+    environment:
+      EULA: "TRUE"
+      TYPE: "NEOFORGE"
+      VERSION: "1.21.1"
+      NEOFORGE_VERSION: "latest"
+      MEMORY: "6G"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: PASSWORD_HOLDER
+      RCON_PORT: 25576
+      SERVER_PORT: PORT_HOLDER
+      USE_AIKAR_FLAGS: "true"
+      OVERRIDE_SERVER_PROPERTIES: "true"
+    ports:
+      - "PORT_HOLDER"
+    restart: unless-stopped

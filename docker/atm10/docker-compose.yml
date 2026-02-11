@@ -1,0 +1,16 @@
+services:
+  atm10:
+    stdin_open: true
+    tty: true
+    image: itzg/minecraft-server:latest
+    container_name: atm10
+    environment:
+      EULA: "TRUE"
+      TYPE: "CURSEFORGE"
+      MEMORY: "10G"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: PASSWORD_HOLDER
+      SERVER_PORT: "PORT_HOLDER"
+    ports:
+      - "PORT_HOLDER"
+    restart: unless-stopped

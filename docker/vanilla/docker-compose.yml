@@ -1,0 +1,23 @@
+services:
+  vanilla:
+    stdin_open: true
+    tty: true
+    image: itzg/minecraft-server:latest
+    container_name: vanilla
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      VERSION: "1.21.11"
+      MEMORY: "4G"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: PASSWORD_HOLDER
+      RCON_PORT: 25575
+      SERVER_PORT: "PORT_HOLDER"
+      USE_AIKAR_FLAGS: "true"
+    volumes:
+      - ./data:/data
+    ports:
+      - "PORT_HOLDER"       # Java
+      - "19132:19132/udp"   # Bedrock 
+      - "24454:24454/udp"   # Voice Chat Mod
+    restart: unless-stopped
